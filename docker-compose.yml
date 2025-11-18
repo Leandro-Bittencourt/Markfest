@@ -3,11 +3,13 @@ version: '3.8'
 services:
   service-discovery:
     build: ./service-discovery
+    container_name: service-discovery
     ports:
       - "8761:8761"
 
   api-gateway:
     build: ./api-gateway
+    container_name: api-gateway
     ports:
       - "8080:8080"
     depends_on:
@@ -15,6 +17,7 @@ services:
 
   auth-service:
     build: ./auth-service
+    container_name: auth-service
     ports:
       - "8081:8081"
     depends_on:
@@ -23,6 +26,7 @@ services:
 
   event-service:
     build: ./event-service
+    container_name: event-service
     ports:
       - "8082:8082"
     depends_on:
@@ -31,6 +35,7 @@ services:
 
   participation-service:
     build: ./participation-service
+    container_name: participation-service
     ports:
       - "8083:8083"
     depends_on:
@@ -39,6 +44,7 @@ services:
 
   notification-service:
     build: ./notification-service
+    container_name: notification-service
     ports:
       - "8084:8084"
     depends_on:
@@ -46,6 +52,7 @@ services:
 
   chat-service:
     build: ./chat-service
+    container_name: chat-service
     ports:
       - "8085:8085"
     depends_on:
@@ -53,21 +60,16 @@ services:
 
   payment-service:
     build: ./payment-service
+    container_name: payment-service
     ports:
       - "8086:8086"
     depends_on:
       - service-discovery
       - db
 
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - api-gateway
-
   mailhog:
     image: mailhog/mailhog
+    container_name: mailhog
     ports:
       - "1025:1025"
       - "8025:8025"
