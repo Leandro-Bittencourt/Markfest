@@ -1,4 +1,7 @@
-FROM eclipse-temurin:17-jdk-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY . .
+RUN chmod +x mvnw
+EXPOSE 8080
+ENTRYPOINT ["./mvnw", "spring-boot:run"]
+

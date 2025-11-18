@@ -1,11 +1,7 @@
-FROM node:18-alpine AS build
+FROM eclipse-temurin:17-jdk
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm install --legacy-peer-deps
 COPY . .
-RUN npm run build
+RUN chmod +x mvnw
+EXPOSE 8080
+ENTRYPOINT ["./mvnw", "spring-boot:run"]
 
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
