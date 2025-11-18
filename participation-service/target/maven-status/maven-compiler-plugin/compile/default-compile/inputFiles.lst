@@ -1,0 +1,8 @@
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/repository/RegistrationRepository.java
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/config/SecurityConfig.java
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/security/JwtAuthFilter.java
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/controller/RegistrationRequest.java
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/model/Registration.java
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/ParticipationApplication.java
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/controller/RestExceptionHandler.java
+/workspaces/Markfest/participation-service/src/main/java/com/markfest/participation/controller/RegistrationController.java

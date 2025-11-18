@@ -1,15 +1,18 @@
 version: '3.8'
+
 services:
   service-discovery:
     build: ./service-discovery
     ports:
       - "8761:8761"
+
   api-gateway:
     build: ./api-gateway
     ports:
       - "8080:8080"
     depends_on:
       - service-discovery
+
   auth-service:
     build: ./auth-service
     ports:
@@ -17,6 +20,7 @@ services:
     depends_on:
       - service-discovery
       - db
+
   event-service:
     build: ./event-service
     ports:
@@ -24,6 +28,7 @@ services:
     depends_on:
       - service-discovery
       - db
+
   participation-service:
     build: ./participation-service
     ports:
@@ -31,39 +36,53 @@ services:
     depends_on:
       - service-discovery
       - db
+
   notification-service:
     build: ./notification-service
     ports:
       - "8084:8084"
     depends_on:
       - service-discovery
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - api-gateway
-  mailhog:
-    image: mailhog/mailhog
-    ports:
-      - "1025:1025"
-      - "8025:8025"
+
   chat-service:
     build: ./chat-service
     ports:
       - "8085:8085"
     depends_on:
       - service-discovery
+
   payment-service:
     build: ./payment-service
     ports:
       - "8086:8086"
     depends_on:
       - service-discovery
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api-gateway
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
   db:
     image: postgres:15
+    container_name: postgres-db
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+volumes:
+  postgres_data:

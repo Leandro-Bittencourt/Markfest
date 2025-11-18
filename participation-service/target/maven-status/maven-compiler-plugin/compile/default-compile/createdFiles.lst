@@ -1,0 +1,8 @@
+com/markfest/participation/controller/RegistrationRequest.class
+com/markfest/participation/model/Registration.class
+com/markfest/participation/controller/RestExceptionHandler.class
+com/markfest/participation/repository/RegistrationRepository.class
+com/markfest/participation/config/SecurityConfig.class
+com/markfest/participation/ParticipationApplication.class
+com/markfest/participation/controller/RegistrationController.class
+com/markfest/participation/security/JwtAuthFilter.class
